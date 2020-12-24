@@ -1,0 +1,19 @@
+# Theme metadata
+name = "Mauricio"
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = "#06805E" # Orange #f05023 - a elemnets and icons
+
+# Menu
+menu_primary = "#FFFFFF" # Ivory - Navbar color
+menu_text = "#65513e" # Brown - Text Navbar
+menu_text_active = "#06805E" # Orange - Active Navbar 
+menu_title = "#65513e" # Brown - Title Navbar
+
+# Backgrounds
+background = "hsla(0, 100%, 100%, 1)" # Ivory
+home_section_odd = "rgb(255, 255, 255)"
+home_section_even = "hsla(220, 9%, 98%, 0.5)"

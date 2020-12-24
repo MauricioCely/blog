@@ -1,0 +1,66 @@
+# Languages
+#   Create a `[X]` block for each language you want, where X is the language ID.
+#   Refer to https://sourcethemes.com/academic/docs/language/
+
+# Configure the English version of the site.
+[en]
+  languageCode = "en-us"
+  contentDir = "content/en"  # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
+
+[es]
+  languageCode = "es-es"
+  contentDir = "content/es"
+  [es.params]
+  description = "Blog de Mauricio Cely - Data Science | Descubriendo el Mundo"
+  copyright_license = {enable = true, allow_derivatives = false, share_alike = true, allow_commercial = false, notice = "Todo el material en esta página cuando no se indique lo contrario es {license}."}
+  contact_links = [
+  {icon = "twitter", icon_pack = "fab", name = "Twitter", link = "https://twitter.com/Mauricio_Cely"},
+  {icon = "skype", icon_pack = "fab", name = "Skype", link = "skype:mauriciocelytoro?chat"},
+  {icon = "envelope", icon_pack = "fas", name = "Escríbeme", link = "mailto:mauriciocelytoro"},
+  ]
+[[es.menu.main]]
+  name = "Inicio"
+  #name = "<i class='fa fa-home'></i> Inicio"
+  url = "#hero"
+  weight = 10
+[[es.menu.main]]
+  name = "Blog"
+  #name = "<i class='fa fa-newspaper'></i> Posts"
+  url = "blog/"
+  weight = 20
+[[es.menu.main]]
+  name = "Proyectos"
+  #name = "<i class='fa fa-cogs'></i> Proyectos"
+  url = "#projects"
+  weight = 30
+[[es.menu.main]]
+  name = "Galería"
+  #name = "<i class='fa fa-image'></i> Galería"
+  url = "#gallery"
+  weight = 40
+[[es.menu.main]]
+  name = "Acerca"
+  #name = "<i class='fa fa-info-circle'></i> Perfil"
+  url = "#about"
+  weight = 50
+[[es.menu.main]]
+  name = "<i style='font-size: 18px;' class='fab fa-github'></i>"
+  url = "https://github.com/mauriciocely"
+  weight = 60
+[[es.menu.main]]
+  name = "<i style='font-size: 18px;' class='fab fa-twitter'></i>"
+  url = "https://twitter.com/Mauricio_Cely"
+  weight = 70
+
+
+# Uncomment the lines below to configure your website in a second language.
+#[zh]
+#  languageCode = "zh-Hans"
+#  contentDir = "content/zh"
+#  title = "Chinese website title..."
+#  [zh.params]
+#    description = "Site description in Chinese..."
+#  [[zh.menu.main]]
+#    name = "Wo"
+#    url = "#about"
+#    weight = 1

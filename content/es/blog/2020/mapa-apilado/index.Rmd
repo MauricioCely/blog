@@ -1,0 +1,127 @@
+---
+title: "Mapa apilado en ggplot"
+subtitle: ""
+summary: "Breve tutorial para crear un mapa apilado"
+author: admin
+categories:
+  - Maths
+  - R
+tags:
+  - rstats
+  - dataviz
+  - tutorial
+date: 2020-10-18T16:38:36-03:00
+lastmod: 2020-10-18T16:38:36-03:00
+featured: yes
+draft: false
+slug: stacked-map
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  placement: 1
+  caption: ''
+  focal_point: "Center"
+  # Focal point options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
+  preview_only: false 
+  alt_text: Breve tutorial para crear un mapa apilado.
+links:
+  - icon_pack: fab
+    icon: twitter
+    name: Seguir
+    url: 'https://twitter.com/Mauricio_Cely'
+output: 
+  blogdown::html_page:
+      highlight: pygments
+      toc: true
+      toc_depth: 2
+header-includes:
+  - \usepackage{cancel}
+---
+
+
+```{r setup, include=FALSE}
+library(knitr) # A General-Purpose Package for Dynamic Report Generation in R
+library(kableExtra) # Construct Complex Table with 'kable' and Pipe Syntax
+library(vembedr) # Functions to Embed Video in HTML
+
+# knitr::opts_chunk$set(collapse = TRUE, 
+#                       warning=FALSE, message=FALSE)
+knitr::opts_chunk$set(
+  comment = "",
+  message = FALSE,
+  tidy = FALSE,
+  cache = TRUE,
+  warning = FALSE,
+  encoding = "UTF-8",
+  fig.align = 'center',
+  fig.show = 'hold')
+knitr::opts_knit$set(list(width = 80))
+# Set margins
+knitr::knit_hooks$set(small.mar = function(before, options, envir) {
+  if (before) par(mar = c(4, 4, 1, 1))  # smaller margin on top and right
+})
+knitr::knit_hooks$set(no.mar = function(before, options, envir) {
+  if (before) par(mar = c(0, 0, 0, 0))  # no margins
+})
+```
+
+# Introducción
+
+En este post se muestra como deformar y apilar mapas para dar la impresión de mapas superpuestos en diferentes capas usando `ggplot`. Este código esta basado en el [*gist*](https://gist.github.com/rafapereirabr/97a7c92d40f91cd20a10e8e0165a0aef) publicado por Rafael Pereira. ¡Gracias Rafa!
+
+Las librerías necesarias para reproducir el ejemplo son:
+
+```{r}
+library(tidyverse) # Easily Install and Load the 'Tidyverse'
+library(ggnewscale) # Multiple Fill and Colour Scales in 'ggplot2'
+library(gganimate) # A Grammar of Animated Graphics
+library(hrbrthemes) # Additional Themes, Theme Components and Utilities for 'ggplot2'
+library(rgdal) # Bindings for the 'Geospatial' Data Abstraction Library
+library(pals) # Color Palettes, Colormaps, and Tools to Evaluate Them
+library(transformr) # Polygon and Path Transformations
+```
+
+Los datos empleados en para este ejemplo los puedes [**descargar**](files/datos.csv) aquí. Los datos  fueron extraídos del sitio web del ministerio de Salud y Protección Social de la República de Colombia [](https://www.minsalud.gov.co/salud/publica/PET/Paginas/Covid-19_copia.aspx), se reporta el número de casos de pacientes fallecidos, activos y recuperados por género que contrayeron COVID-19 para cada departamento hasta el día 10-10-2020.
+
+```{r}
+# Translation to center of coordinate system ------------------------------
+
+mapa.covid <-
+  read_csv("files/datos.csv") %>% 
+  select(-id)
+
+mapa.covid %>% head() %>% 
+  kable(align = "c") %>%
+  kable_styling("striped", full_width = TRUE)
+
+mapa.covid <-
+  mapa.covid %>%
+  mutate(long = long - mean(long),
+         lat = lat - mean(lat))
+
+# Shear effect and Rotation Matrix ------------------------------
+
+# Shear Matrix
+shear_matrix <- 
+  matrix(c(1,0,0.7,0.5),2,2) %>% t
+
+# Rotation matrix
+rotation_matrix <- 
+  function(theta){
+    matrix(c(cos(theta*pi/180), -sin(theta*pi/180),
+             sin(theta*pi/180), cos(theta*pi/180)),
+           nrow = 2, ncol = 2, byrow = T) %>% 
+      round(digits = 2)
+  }
+```
+
+## Header 2
+
+### Header 3
+
+#### Header 4
+
+##### Header 5
+
+###### Header 6

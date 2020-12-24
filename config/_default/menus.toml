@@ -1,0 +1,52 @@
+# Navigation Links
+#   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
+#     desired widget in your `content/home/` folder.
+#   The weight parameter defines the order that the links will appear in.
+
+[[main]]
+  name = "Home"
+  #name = "<span class='fa fa-home'></span> Home"
+  url = "#hero"
+  weight = 10
+
+
+[[main]]
+  name = "Blog"
+  #name = "<i class='fa fa-newspaper'></i> Posts"
+  url = "blog/"
+  weight = 20
+
+[[main]]
+  name = "Projects"
+  #name = "<i class='fa fa-cogs'></i> Projects"
+  url = "#projects"
+  weight = 30
+
+[[main]]
+  name = "Gallery"
+  #$name = "<i class='fa fa-image'></i> Gallery"
+  url = "#gallery"
+  weight = 40
+
+[[main]]
+  name = "About"
+  #name = "<i class='fa fa-info-circle'></i> About"
+  url = "#about"
+  weight = 50
+  
+[[main]]
+  name = "<i style='font-size: 18px;' class='fab fa-github'></i>"
+  url = "https://github.com/mauriciocely"
+  weight = 60
+  
+[[main]]
+  name = "<i style='font-size: 18px;' class='fab fa-twitter'></i>"
+  url = "https://twitter.com/Mauricio_Cely"
+  weight = 70
+
+# Link to a PDF of your resume/CV from the menu.
+# To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
+# [[main]]
+#    name = "CV"
+#    url = "files/cv.pdf"
+#    weight = 60

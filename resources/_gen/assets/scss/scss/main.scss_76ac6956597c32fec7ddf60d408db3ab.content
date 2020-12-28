@@ -9210,8 +9210,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /*Language menu*/
 .dropdown-item, .dropdown-item-active, .dropdown-toggle {
-  text-transform: capitalize;
-  font-size: 0.8rem; }
+  font-size: 0.7rem; }
 
 /*Name of the site*/
 .navbar-brand {
@@ -9251,7 +9250,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .media.stream-item .article-style, .article-style, .article p {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: 600;
+  font-weight: normal;
   font-size: 1em;
   text-align: justify;
   letter-spacing: 0.01em;
@@ -9306,6 +9305,7 @@ ul.share li i {
 
 #projects .article-style {
   text-align: justify;
+  font-weight: normal;
   letter-spacing: 0.01em;
   line-height: 1.5em; }
 
@@ -9327,18 +9327,12 @@ ul.share li i {
  **************************************************/
 #about p {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: 600;
-  font-size: 1em;
-  text-align: justify;
-  letter-spacing: 0.01em;
-  line-height: 1.5em; }
+  color: #65513e;
+  text-align: justify; }
 
 #about li {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: 600;
-  font-size: 1em;
-  letter-spacing: 0.01em;
-  line-height: 1.5em; }
+  color: #65513e; }
 
 #about .big-icon {
   font-size: 1.5em; }
@@ -9348,8 +9342,7 @@ ul.share li i {
 
 .portrait-title h2, .portrait-title h3 {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  letter-spacing: 0;
-  font-weight: 900; }
+  letter-spacing: 0; }
 
 /*************************************************
  *  Skills
@@ -9383,8 +9376,7 @@ ul.share li i {
 .exp-company {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
   letter-spacing: 0;
-  font-weight: bolder !important;
-  text-transform: uppercase !important; }
+  font-weight: bolder !important; }
 
 .exp-meta {
   font-family: 'Raleway', 'Spartan', sans-serif;
@@ -9392,16 +9384,8 @@ ul.share li i {
 
 #experience .card-text {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: 600;
+  font-size: 0.8em !important;
   text-align: justify;
-  letter-spacing: 0.01em;
-  line-height: 1.5em; }
-
-#about li {
-  font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: 600;
-  font-size: 1em;
-  letter-spacing: 0.01em;
   line-height: 1.5em; }
 
 /*************************************************
@@ -9412,12 +9396,11 @@ ul.share li i {
   letter-spacing: 0; }
 
 #contact .btn {
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: bolder; }
 
 .contact-widget .fa-ul a {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: bolder !important;
   color: #65513e; }
 
 .contact-widget .fa-li {
@@ -9445,8 +9428,34 @@ code {
 footer p {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
   font-size: 0.9em;
-  line-height: 0.8em; }
+  line-height: 1.2em; }
 
 /*************************************************
   *  Toolbar Buttons
   **************************************************/
+/*----NAV LINK HOVER ANIMATION -----*/
+/* from Desiree: https://github.com/dcossyleon/blogdown_desiree/blob/master/assets/scss/custom.scss */
+/* stroke */
+#navbar-content a.nav-link,
+#navbar-content a.nav-link:after,
+#navbar-content a.nav-link:before {
+  transition: all .5s; }
+
+#navbar-content a.nav-link {
+  position: relative; }
+
+#navbar-content a.nav-link:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  /* make invisible, dot beneath links */
+  color: transparent;
+  background: #06805E;
+  height: 2px; }
+
+#navbar-content a.nav-link:hover:after {
+  width: 80%; }

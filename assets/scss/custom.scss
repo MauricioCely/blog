@@ -61,13 +61,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /*Language menu*/
 .dropdown-item , .dropdown-item-active, .dropdown-toggle {
-  text-transform: capitalize;
-  font-size: 0.8rem;
+  // text-transform: capitalize;
+  font-size: 0.7rem;
 }
 
 /*Name of the site*/
 .navbar-brand {
   font-family: 'Overpass Mono', monospace;
+  // font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: -0.1em;
 }
@@ -113,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .media.stream-item .article-style, .article-style, .article p {
     font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-    font-weight: 600;
+    font-weight: normal;
     font-size: 1em;
     text-align: justify;
     letter-spacing: 0.01em;
@@ -178,6 +179,7 @@ ul.share li i {
 
 #projects .article-style {
   text-align: justify;
+  font-weight: normal;
   letter-spacing: 0.01em;
   line-height: 1.5em;
 }
@@ -206,19 +208,21 @@ ul.share li i {
 
 #about p {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: 600;
-  font-size: 1em;
+  color: #65513e;
+  // font-weight: 600;
+  // font-size: 1em;
   text-align: justify;
-  letter-spacing: 0.01em;
-  line-height: 1.5em;
+  // letter-spacing: 0.01em;
+  // line-height: 1.5em;
 }
 
  #about li {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: 600;
-  font-size: 1em;
-  letter-spacing: 0.01em;
-  line-height: 1.5em;
+  color: #65513e;
+  // font-weight: normal;
+  // font-size: 1em;
+  // letter-spacing: 0.01em;
+  // line-height: 1.5em;
 }
 
 #about .big-icon {
@@ -232,7 +236,7 @@ ul.share li i {
 .portrait-title h2, .portrait-title h3 {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
   letter-spacing: 0;
-  font-weight: 900;
+  // font-weight: 700;
 }
 
 /*************************************************
@@ -275,7 +279,7 @@ ul.share li i {
     font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
     letter-spacing: 0;
     font-weight: bolder !important;
-    text-transform: uppercase !important;
+    // text-transform: uppercase !important;
  }
 
  .exp-meta {
@@ -285,19 +289,12 @@ ul.share li i {
 
 #experience .card-text {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: 600;
+  font-size: 0.8em !important;
+  // font-weight: 600;
   text-align: justify;
-  letter-spacing: 0.01em;
   line-height: 1.5em;
 }
 
- #about li {
-  font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: 600;
-  font-size: 1em;
-  letter-spacing: 0.01em;
-  line-height: 1.5em;
-}
 
 /*************************************************
  *  Contact
@@ -309,13 +306,13 @@ ul.share li i {
 }
 
 #contact .btn {
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: bolder;
 }
 
 .contact-widget .fa-ul a {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  font-weight: bolder !important;
+  // font-weight: bolder !important;
   color: #65513e;
 }
 
@@ -376,7 +373,7 @@ ul.share li i {
  footer p {
    font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
    font-size: 0.9em;
-   line-height: 0.8em;
+   line-height: 1.2em;
  }
 
  /*************************************************
@@ -384,30 +381,34 @@ ul.share li i {
   **************************************************/
 
 
- // /* link effects; appendix apply to footnote return links */
- //   p a, li a, dropdown-menu a, a.footnote-backlink {
- //     color: #f05023; /*Orange*/
- //     display: inline-block;
- //     text-decoration: none;
- //     transition: background-size .4s ease;
- //     border-bottom: 0px solid;
- //   }
- //
- // p a:after, li a:after, dropdown-menu a:after {
- //   content: '';
- //   display: block;
- //   width: 0;
- //   height: 1.5px;
- //   background: #f05023; /*Orange*/
- //   transition: width .3s;
- // }
- //
- // a:hover {
- //     text-decoration: none;
- // }
- //
- // p a:hover::after, li a:hover::after, dropdown-menu a:hover::after {
- //   width: 100%;
- //   text-decoration: none;
- //   //transition: width .3s;
- // }
+  /*----NAV LINK HOVER ANIMATION -----*/
+  /* from Desiree: https://github.com/dcossyleon/blogdown_desiree/blob/master/assets/scss/custom.scss */
+
+  /* stroke */
+
+  #navbar-content a.nav-link,
+  #navbar-content a.nav-link:after,
+  #navbar-content a.nav-link:before {
+    transition: all .5s;
+  }
+
+  #navbar-content a.nav-link {
+    position: relative;
+  }
+
+  #navbar-content a.nav-link:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.'; /* make invisible, dot beneath links */
+    color: transparent;
+    background: #06805E;
+    height: 2px;
+  }
+
+  #navbar-content a.nav-link:hover:after {
+    width: 80%;
+  }

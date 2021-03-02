@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bolder;
   letter-spacing: 0.1em;
   line-height: 1.25;
-  color: #65513e; /*Brown*/
+  color: #284b63; /*Brown*/
 
 }
 
@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
 /*Hover color*/
  .navbar .navbar-nav a:hover {
      font-weight: bolder !important;
-     color: #06805E !important;
+     color: #284b63 !important;
  }
 
 /*Language menu*/
@@ -70,12 +70,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Overpass Mono', monospace;
   // font-size: 0.8rem;
   font-weight: 400;
-  letter-spacing: -0.1em;
+  letter-spacing: -0.15em;
 }
 
 /*Logo Size*/
 .navbar-brand img {
-  max-height: 40px;
+  max-height: 50px;
+  padding: 0;
+
 }
 
 /*************************************************
@@ -104,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
   **************************************************/
 
  .article-title a {
-   color: #65513e;
+   color: #353535;
    transition: color 0.6s ease;
  }
 
@@ -119,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: justify;
     letter-spacing: 0.01em;
     line-height: 1.5em;
-    color: #65513e;
+    color: #353535;
   }
 
 .article-tags {
@@ -129,11 +131,25 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
   letter-spacing: 0.01em;
   font-weight: 600;
-  color: #65513e;
+  color: #353535;
+}
+
+
+#TOC ul {
+  list-style: none;
+}
+
+#TOC ul li::before {
+  content: ">";
+  color: #284b63;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
 }
 
 ul.share li i {
-  color: #06805E;
+  color: #284b63;
 }
 
 .btn-links .btn {
@@ -208,7 +224,7 @@ ul.share li i {
 
 #about p {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  color: #65513e;
+  color: #353535;
   // font-weight: 600;
   // font-size: 1em;
   text-align: justify;
@@ -218,12 +234,32 @@ ul.share li i {
 
  #about li {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
-  color: #65513e;
+  color: #353535;
   // font-weight: normal;
   // font-size: 1em;
   // letter-spacing: 0.01em;
   // line-height: 1.5em;
 }
+
+#about .ul-interests {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#about .ul-interests li {
+  padding-left: 1em; 
+  text-indent: -.7em;
+}
+
+#about .ul-interests li::before {
+  content: ">";
+  color: #284b63;
+  font-weight: bolder;
+  display: inline-block; 
+  width: .5em;
+}
+
 
 #about .big-icon {
   font-size: 1.5em;
@@ -313,12 +349,12 @@ ul.share li i {
 .contact-widget .fa-ul a {
   font-family: 'Brandon Grotesque', 'Spartan', sans-serif;
   // font-weight: bolder !important;
-  color: #65513e;
+  color: #353535;
 }
 
 
 .contact-widget .fa-li {
-  color: #06805E;
+  color: #284b63;
 }
 
 
@@ -405,7 +441,7 @@ ul.share li i {
     width: 0%;
     content: '.'; /* make invisible, dot beneath links */
     color: transparent;
-    background: #06805E;
+    background: #284b63;
     height: 2px;
   }
 

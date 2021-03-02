@@ -3,17 +3,12 @@ title: "Estimating $\\pi$ using the Monte Carlo Method."
 subtitle: ""
 author: admin
 date: '2020-08-05'
-categories:
-  - Maths
-  - Science
-  - R
-tags:
-  - rstats
-  - dataviz
-  - tutorial
+categories: [Maths, Science, R]
+tags: [rstats, dataviz, tutorial]
 slug: estimating-pi-using-the-monte-carlo-method
 summary: "This is a brief description of the Monte Carlo method to estimate $\\pi$"
 lastmod: '2020-08-05T12:16:55-03:00'
+projects: []
 featured: yes
 draft: no
 image:

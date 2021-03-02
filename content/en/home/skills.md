@@ -12,7 +12,7 @@ subtitle = ""
 [design.background]
   # Background image.
   image = "headers/wall.png"  # Name of image in `static/img/`.
-  image_darken = 0.3  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
+  image_darken = 0.5  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
   image_size = "cover"  #  Options are `cover` (default), `contain`, or `actual` size.
   image_position = "center"  # Options include `left`, `center` (default), or `right`.
   image_parallax = true  # Use a fun parallax-like fixed background effect? true/false
@@ -31,6 +31,12 @@ subtitle = ""
   icon_pack = "fab"
   name = "R"
   description = "50%"
+  
+[[feature]]
+  icon = "html5"
+  icon_pack = "fab"
+  name = "HTML & CSS"
+  description = "50%"
 
 [[feature]]
   icon = "rocket"
@@ -38,11 +44,11 @@ subtitle = ""
   name = "Science"
   description = "1%"
 
-[[feature]]
-  icon = "chart-line"
-  icon_pack = "fas"
-  name = "Statistics"
-  description = "60%"  
+# [[feature]]
+#   icon = "chart-line"
+#   icon_pack = "fas"
+#   name = "Statistics"
+#   description = "60%"  
   
 [[feature]]
   icon = "camera-retro"

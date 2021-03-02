@@ -5,13 +5,13 @@ name = "Mauricio"
 light = true
 
 # Primary
-primary = "#06805E" # Orange #f05023 - a elemnets and icons
+primary = "#284b63" # Orange #f05023 #Blue #34495e #Green #06805E- a elemnets and icons
 
 # Menu
 menu_primary = "#FFFFFF" # Ivory - Navbar color
-menu_text = "#65513e" # Brown - Text Navbar
-menu_text_active = "#06805E" # Orange - Active Navbar 
-menu_title = "#65513e" # Brown - Title Navbar
+menu_text = "#353535" # Brown - Text Navbar
+menu_text_active = "#284b63" # Orange - Active Navbar 
+menu_title = "#353535" # Brown - Title Navbar
 
 # Backgrounds
 background = "hsla(0, 100%, 100%, 1)" # Ivory

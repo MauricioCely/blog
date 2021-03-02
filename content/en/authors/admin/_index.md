@@ -47,7 +47,6 @@ social:
   icon_pack: ai
   link: doc/cv/cv.pdf
 superuser: true
-title: Iván Mauricio Cely Toro
 user_groups:
 - Researchers
 ---

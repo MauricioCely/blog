@@ -11,7 +11,7 @@
   languageCode = "es-es"
   contentDir = "content/es"
   [es.params]
-  description = "Blog de Mauricio Cely - Data Science | Descubriendo el Mundo"
+  description = "Data Science | Descubriendo el Mundo. Ciencia, matemáticas y más. Aprende algunos consejos útiles usando el lenguaje de programación R."
   copyright_license = {enable = true, allow_derivatives = false, share_alike = true, allow_commercial = false, notice = "Todo el material en esta página cuando no se indique lo contrario es {license}."}
   contact_links = [
   {icon = "twitter", icon_pack = "fab", name = "Twitter", link = "https://twitter.com/Mauricio_Cely"},

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="" />
+  <title>🍃 – Modelos de dispersión atmosférica </title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Presentation_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="Presentation_files/reveal.js-3.3.0.1/css/theme/black.css" id="theme">
+
+<style type="text/css">
+.reveal section img {
+  background: rgba(255, 255, 255, 0.85);
+}
+</style>
+
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal .slide-menu-button {
+      left: 105px !important;
+    }
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="addins/personal_style.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+
+    <script src="Presentation_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="Presentation_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="Presentation_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section data-background="img/background/slide_title.png">
+<a href="https://ufsm.br" class="logo logo--left"><img src="img/logo/logo_left.png" alt="UFSM" ></a>
+<a href="https://www.ufsm.br/cursos/pos-graduacao/santa-maria/pgfisica/" class="logo logo--right"><img src="img/logo/logo_right.png" alt="CAPES" ></a>
+    <h1 class="title" id="title"><strong>Modelos de dispersión atmosférica</strong> <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M156.7 256H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h142.2c15.9 0 30.8 10.9 33.4 26.6 3.3 20-12.1 37.4-31.6 37.4-14.1 0-26.1-9.2-30.4-21.9-2.1-6.3-8.6-10.1-15.2-10.1H81.6c-9.8 0-17.7 8.8-15.9 18.4 8.6 44.1 47.6 77.6 94.2 77.6 57.1 0 102.7-50.1 95.2-108.6C249 291 205.4 256 156.7 256zM16 224h336c59.7 0 106.8-54.8 93.8-116.7-7.6-36.2-36.9-65.5-73.1-73.1-55.4-11.6-105.1 24.9-114.9 75.5-1.9 9.6 6.1 18.3 15.8 18.3h32.8c6.7 0 13.1-3.8 15.2-10.1C325.9 105.2 337.9 96 352 96c19.4 0 34.9 17.4 31.6 37.4-2.6 15.7-17.4 26.6-33.4 26.6H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16zm384 32H243.7c19.3 16.6 33.2 38.8 39.8 64H400c26.5 0 48 21.5 48 48s-21.5 48-48 48c-17.9 0-33.3-9.9-41.6-24.4-2.9-5-8.7-7.6-14.5-7.6h-33.8c-10.9 0-19 10.8-15.3 21.1 17.8 50.6 70.5 84.8 129.4 72.3 41.2-8.7 75.1-41.6 84.7-82.7C526 321.5 470.5 256 400 256z"/></svg></h1>
+  <h1 class="subtitle" id="subtitle">Conceptos y características generales <br></h1>
+    <h2 class="author" id="author"><img style="margin: auto;" src="img/figures/smoke.gif" height="300"></h2>
+    <h2 class="description" id="description">Presentado por: <br/>    <a href="mailto:mauriciocelytoro@hotmail.com"><em>Iván Mauricio Cely Toro</em></a> <br></h2>
+    <h3 class="date" id="date">Santa Maria - 2021</h3>
+</section>
+
+<section id="instrucciones-para-visualizar-la-presentación" class="title-slide slide level1" data-menu-title="Instrucciones">
+<h1 data-menu-title="Instrucciones"><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg> Instrucciones para visualizar la presentación</h1>
+<p>Los comandos para visualizar propiamente la presentación son los siguientes:</p>
+<p> </p>
+<blockquote>
+<p><span class="fragment highlight-current-blue" data-fragment-index="1">Para <strong>avanzar</strong> use la tecla <code>N</code> o la tecla <code>Espacio</code></span></p>
+</blockquote>
+<blockquote>
+<p><span class="fragment highlight-current-blue" data-fragment-index="2">Para <strong>regresar</strong> la tecla <code>P</code></span></p>
+</blockquote>
+<p><img src="img/figures/help2.gif" height="200px" style="display: block; margin: auto;" /></p>
+<blockquote>
+<p><span class="fragment highlight-current-green" data-fragment-index="3">Si necesita <strong>ayuda</strong> presione la tecla <svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"/></svg> para ver los comandos</span></p>
+</blockquote>
+<!-- [current-visible]{.fragment .current-visible data-fragment-index=2} -->
+<!-- [highlight-red]{.fragment .highlight-red} -->
+<!-- [highlight-green]{.fragment .highlight-green data-fragment-index="1"} -->
+<!-- [highlight-blue]{.fragment .highlight-blue} -->
+<!-- [highlight-current-red]{.fragment .highlight-current-red} -->
+<!-- [fade-out]{.fragment .fade-out} -->
+<!-- [strike]{.fragment .strike} -->
+<!-- [grow]{.fragment .grow} -->
+<!-- [shrink]{.fragment .shrink} -->
+</section>
+
+<section id="objetivo" class="title-slide slide level1">
+<h1>Objetivo</h1>
+<ul>
+<li class="fragment">Comprender qué es un modelo de dispersión, en lugar de simplemente pensar en él como una caja negra que arroja respuestas.<br />
+<img src="img/figures/mystery.png" width="400px" style="display: block; margin: auto;" /></li>
+<li class="fragment">Comprender conceptos principales relacionados con el fenómeno de dispersión: aumento de la pluma y turbulencia. También mencionaré algunas de las limitaciones de los modelos y las complicaciones que pueden afectar los resultados del modelo.</li>
+</ul>
+</section>
+
+<section>
+<section id="introducción" class="title-slide slide level1">
+<h1>Introducción</h1>
+
+</section>
+<section id="qué-es-un-modelo" class="slide level2">
+<h2>¿Qué es un modelo?</h2>
+<p>Un modelo físico es un marco de ideas y conceptos a partir del cual interpretamos nuestras observaciones y resultados experimentales de un fenómeno natural. <br><br> <img src="img/figures/model.jpg" width="557" style="display: block; margin: auto;" /></p>
+<br>
+<p style="text-align:center;">
+<span class="fragment fade-in grow">“Simulación la realidad”</span>
+</p>
+</section>
+<section id="qué-entendemos-por-dispersión" class="slide level2">
+<h2>¿Qué entendemos por dispersión?</h2>
+<p><span class="fragment fade-in">Dispersión es el nombre que se le da a la propagación y movimiento de contaminantes. Los contaminantes se dispersan con el tiempo mezclándose con aire más limpio circundante, lo que resulta en una diluir la mezcla dentro de una columna de humo o pluma que se extiende. <img src="img/figures/diffusion.gif" height="200px" style="display: block; margin: auto;" /> La dispersión se rige principalmente por la turbulencia, que mezcla el aire ambiente con la pluma. Los tres tipos de turbulencia que actúan para dispersar una columna son la turbulencia mecánica, la turbulencia causada por el cizallamiento y la turbulencia causada por la flotabilidad.</span></p>
+</section>
+<section id="factores-de-dispersión" class="slide level2" data-background="img/figures/dispersion.gif" data-background-size="cover" style="color:#FFFFF;">
+<h2 data-background="img/figures/dispersion.gif" data-background-size="cover" style="color:#FFFFF;">Factores de dispersión</h2>
+<ul>
+<li class="fragment">Variables meteorológicas (como la velocidad y dirección de los vientos, estabilidad atmosférica)</li>
+<li class="fragment">Variables topográficas o de orografía del terreno</li>
+<li class="fragment">Variables relativas a la emisión del contaminante</li>
+<li class="fragment">Cantidad emitida</li>
+<li class="fragment">Posición y altura del foco emisor</li>
+<li class="fragment">Tipo de contaminante (Gases o Partículas)</li>
+<li class="fragment">Temperatura de emisión.</li>
+<li class="fragment">Velocidad de emisión.</li>
+</ul>
+</section>
+<section id="aplicabilidad-y-uso" class="slide level2">
+<h2>Aplicabilidad y uso</h2>
+<p>El objetivo de calcular la dispersión es predecir o diagnosticar la concentración de contaminantes en algunos punto distante de la fuente.</p>
+<div class="container">
+<div class="col">
+<img data-src="img/figures/forward.gif" height="250" /> <br>
+<p style="text-align: center;">
+<span class="fragment highlight-green" data-fragment-index="1">Forward trajectory</span>
+</p>
+</div>
+<div class="col">
+<img data-src="img/figures/backward.gif" height="250" /> <br>
+<p style="text-align: center;">
+<span class="fragment highlight-blue" data-fragment-index="2">Backward trajectory</span>
+</p>
+</div>
+</div>
+<p><br><br> O sea, saber hacia a <span class="fragment highlight-green" data-fragment-index="1">dónde va</span> o de <span class="fragment highlight-blue" data-fragment-index="2">dónde viene</span> el poluente.</p>
+</section></section>
+<section>
+<section id="repaso-de-conceptos" class="title-slide slide level1">
+<h1>Repaso de Conceptos</h1>
+<p><img data-src="img/figures/review-maths.gif" height="550" /></p>
+</section>
+<section id="estabilidad-atmosférica" class="slide level2">
+<h2>Estabilidad Atmosférica</h2>
+<p><br><br><br></p>
+<div class="container">
+<div class="col">
+<p><strong>Estable</strong></p>
+<p><img data-src="img/figures/stable.gif" height="250" /></p>
+</div>
+<div class="col">
+<p><strong>Neutro</strong></p>
+<p><img data-src="img/figures/neutral.gif" height="250" /></p>
+</div>
+<div class="col">
+<p><strong>Inestable</strong></p>
+<p><img data-src="img/figures/unstable.gif" height="250" /></p>
+</div>
+</div>
+</section>
+<section id="isotropía-y-anisotropía" class="slide level2">
+<h2>Isotropía y Anisotropía</h2>
+<p>La <strong>isotropía</strong> es la característica de algunos fenómenos en el espacio cuyas propiedades <strong>NO</strong> dependen de la dirección en que son examinadas. La <strong>anisotropía</strong> depende de la dirección.</p>
+<p><img data-src="img/figures/isotropia.gif" height="350" /></p>
+</section>
+<section id="algunas-ecuaciones" class="slide level2">
+<h2>Algunas ecuaciones</h2>
+<div class="container">
+<div class="col">
+<p><em>Descomposición de Reynolds</em></p>
+<ul>
+<li class="fragment"><span class="math inline">\(x = \bar{x} + x&#39;\)</span></li>
+</ul>
+<hr />
+<p><em>Media aritmética</em></p>
+<ul>
+<li class="fragment"><span class="math inline">\({\bar {x}}={\frac {1}{N}}\left(\sum _{i=1}^{N}{x_{i}}\right)={\frac {x_{1}+x_{2}+\cdots +x_{n}}{n}}\)</span></li>
+</ul>
+<hr />
+<p><em>Varianza</em></p>
+<ul>
+<li class="fragment"><span class="math inline">\(\sigma_{x}^{2}={\frac {1}{N}}\sum _{i=1}^{N}\left(x_{i}-{\bar {x}}\right)^{2} = \overline{x&#39;^{2}}\)</span></li>
+</ul>
+<hr />
+<p><em>Desviación Estándar</em></p>
+<ul>
+<li class="fragment"><span class="math inline">\(\sigma_{x} = \sqrt{\sigma_{x}^{2}}\)</span></li>
+</ul>
+</div>
+<div class="col">
+<p><img data-src="img/figures/Reynolds-Decomposition.png" height="250" /></p>
+</div>
+</div>
+</section>
+<section id="isotropía-otra-vez" class="slide level2">
+<h2>Isotropía… Otra vez</h2>
+<div class="container">
+<div class="col">
+<p>La tasa de dispersión del humo depende de la varianza de la velocidad.</p>
+<p><span class="math display">\[\sigma_{u}^{2}= \sigma_{v}^{2}= \sigma_{w}^{2}\]</span></p>
+</div>
+<div class="col">
+<p><img data-src="img/figures/plume_isotropy.png" height="350" /></p>
+</div>
+</div>
+</section>
+<section id="estadísticas-de-dispersión-instantánea-vs.-promedio" class="slide level2">
+<h2>Estadísticas de Dispersión: Instantánea vs. Promedio</h2>
+<div class="container">
+<div class="col">
+<p><img data-src="img/figures/plume.png" height="350" /></p>
+</div>
+<div class="col">
+<p><img data-src="img/figures/snapshot_plume.png" height="350" /></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="modelado-de-dispersión-atmosférica" class="title-slide slide level1">
+<h1>Modelado de dispersión atmosférica</h1>
+<div class="container">
+<div class="col">
+<p><img src="img/figures/maths.gif" style="display: block; margin: auto;" /></p>
+<p>Es la simulación matemática que representa cómo se dispersan los contaminantes del aire en la atmósfera. Se realiza con programas informáticos que incluyen algoritmos para resolver las ecuaciones matemáticas que gobiernan la dispersión de contaminantes.</p>
+</div>
+<div class="col">
+<div class="figure" style="text-align: center">
+<img src="img/figures/SCM_scheme.png" alt="Fig. 1: Diagrama representativo de un modelo de Capa Límite Atmosférica" width="300px" />
+<p class="caption">
+Fig. 1: Diagrama representativo de un modelo de Capa Límite Atmosférica
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="descripción-de-los-modelos" class="slide level2">
+<h2>Descripción de los modelos</h2>
+<p>Hay dos formas de describir los flujos de fluidos, de igual modo ocurre con los modelos de dispersión. <br><br></p>
+<div class="container">
+<div class="col" style="margin: 10px;">
+<p><span class="fragment highlight-blue" data-fragment-index="1"><strong>Euler:</strong></span> Define un volumen de control, dentro del cual las propiedades de flujo de fluido de interés se expresan como campos. <video width="640" height="320" autoplay loop> <source src="img/video/Eulerian_Turbulence.mp4" type="video/mp4"> </video></p>
+</div>
+<div class="col" style="margin: 10px;">
+<p><span class="fragment highlight-blue" data-fragment-index="1"><strong>Lagrange:</strong></span> Rastrea las partículas de fluidos individuales, al igual que el rastreo de bolas de billar en un experimento de física de la escuela secundaria. <video width="640" height="320" autoplay loop> <source src="img/video/Lagrangian_Turbulence.mp4" type="video/mp4"> </video></p>
+</div>
+</div>
+</section>
+<section id="ejemplos-de-modelos-de-dispersión" class="slide level2">
+<h2>Ejemplos de Modelos de Dispersión</h2>
+<div class="container">
+<div class="col">
+<a href="https://www.arl.noaa.gov/hysplit/hysplit/" target="_blank"> <img data-src="img/figures/hysplit.png" height="150" alt="HYSPLIT" /> <br>
+<p style="text-align: center;">
+HYSPLIT
+</p>
+<p></a></p>
+</div>
+<div class="col">
+<a href="https://sprayweb.isac.cnr.it/" target="_blank"> <img data-src="img/figures/sprayweb.png" height="150" alt="SPRAY-WEB" /> <br>
+<p style="text-align: center;">
+SPRAY-WEB
+</p>
+<p></a></p>
+</div>
+<div class="col">
+<a href="https://embed.windy.com/embed2.html?lat=-9.059&lon=-74.224&detailLat=-9.059&detailLon=-74.224&width=650&height=550&zoom=6&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1" target="_blank"> <img data-src="img/figures/windy.png" height="150" alt="CAMS" /> <br>
+<p style="text-align: center;">
+SPRAY-WEB
+</p>
+<p></a></p>
+</div>
+</div>
+<p><br><br> <a href="https://en.wikipedia.org/wiki/List_of_atmospheric_dispersion_models">🌀 Más modelos de dispersión</a></p>
+</section></section>
+<section id="section" class="title-slide slide level1" data-background="img/figures/plume_linhares.GIF" data-background-size="contain" style="color:#FFFFF;">
+<h1 data-background="img/figures/plume_linhares.GIF" data-background-size="contain" style="color:#FFFFF;"></h1>
+
+</section>
+
+<section id="section-1" class="title-slide slide level1" data-background-video="img/video/model_animation.webm" data-background-video-loop="loop">
+<h1 data-background-video="img/video/model_animation.webm" data-background-video-loop="loop"></h1>
+
+</section>
+
+<section id="más-información" class="title-slide slide level1">
+<h1>Más información</h1>
+<embed src="img/media/Clase_dispersion.pdf" width="100%" height="600px">
+</section>
+
+<section id="referencias-bibliográficas" class="title-slide slide level1">
+<h1><i class="fas fa-book"></i> Referencias bibliográficas</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" style="text-align:justify; font-size:0.7em;" role="doc-bibliography">
+<div id="ref-hewitt2011fisica" class="csl-entry" role="doc-biblioentry">
+Hewitt, P. G. 2011. <em>Fisica Conceptual</em>. Pearson Educaci<span>ó</span>n de M<span>é</span>xico, SA de CV.
+</div>
+<div id="ref-hewitt2004prácticas" class="csl-entry" role="doc-biblioentry">
+Hewitt, P. G., and V. G. Pozo. 2004. <em>Pr<span>á</span>cticas de f<span>ı́</span>sica Conceptual</em>. Area Bachillerato. Pearson Educaci<span>ó</span>n de M<span>é</span>xico.
+</div>
+<div id="ref-resnick2002física" class="csl-entry" role="doc-biblioentry">
+Resnick, R., D. Halliday, K. S. Krane, and E. A. Miguel. 2002. <em>F<span>ı́</span>sica</em>. F<span>ı́</span>sica, v. 2. CECSA.
+</div>
+<div id="ref-sears2005fisica" class="csl-entry" role="doc-biblioentry">
+Sears, Francis Weston, A Lewis Ford, and Roger A Freedman. 2005a. <em>F<span>ı́</span>sica Universitaria Con f<span>ı́</span>sica Moderna</em>. Vol. 1. Pearson educaci<span>ó</span>n.
+</div>
+<div id="ref-sears2005fisica2" class="csl-entry" role="doc-biblioentry">
+———. 2005b. <em>F<span>ı́</span>sica Universitaria Con f<span>ı́</span>sica Moderna</em>. Vol. 2. Pearson educaci<span>ó</span>n.
+</div>
+<div id="ref-serway2018physics" class="csl-entry" role="doc-biblioentry">
+Serway, Raymond A, and John W Jewett. 2018. <em>Physics for Scientists and Engineers</em>. Cengage learning.
+</div>
+<div id="ref-tipler1999física" class="csl-entry" role="doc-biblioentry">
+Tipler, P. A., and J. A. Peris. 1999. <em>F<span>ı́</span>sica Para La Ciencia y La Tecnolog<span>ı́</span>a</em>. F<span>ı́</span>sica Para La Ciencia y La Tecnolog<span>ı́</span>a, v. 1. Revert<span>é</span>.
+</div>
+<div id="ref-tipler2004fisica" class="csl-entry" role="doc-biblioentry">
+Tipler, Paul Allen, and Gene Mosca. 2004. <em>F<span>ı́</span>sica Para La Ciencia y La Tecnolog<span>ı́</span>a. I</em>. Vol. 1. Revert<span>é</span>.
+</div>
+</div>
+</section>
+
+<section id="gracias" class="title-slide slide level1" data-background="img/figures/thanks.gif" data-background-size="contain" style="color:#212529;">
+<h1 data-background="img/figures/thanks.gif" data-background-size="contain" style="color:#212529;">¡¡¡ Gracias 🎉 !!!</h1>
+
+</section>
+    </div>
+  </div>
+
+  <script src="Presentation_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="Presentation_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: 'h.v',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // Parallax background image
+        parallaxBackgroundImage: 'chalkboard.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+        // Parallax background size
+        parallaxBackgroundSize: '1919px 1272px', // CSS syntax, e.g. "2100px 900px"
+        // Amount to move parallax background (horizontal and vertical) on slide change
+        // Number, e.g. 100
+        parallaxBackgroundHorizontal: '100',
+        parallaxBackgroundVertical: '50',
+
+        menu: {
+          side: 'left',
+          numbers: true,
+          titleSelector: 'h1, h2, h3, h4, h5, h6',
+          hideMissingTitles: false,
+          markers: true,
+          openButton: true,
+          openSlideNumber: true,
+          keyboard: true,
+          custom: false,
+          themes: false,
+          transitions: false
+        },
+
+
+
+        chalkboard: {
+          color: '',
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'Presentation_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'Presentation_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+          { src: 'Presentation_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+          { src: 'Presentation_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>

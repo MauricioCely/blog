@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 1  # Order that this section will appear.
 
-title = "Sitio en construcción"
+title = "Modelos de Dispersión"
 
  # Hero image (optional). Enter filename of an image in the `static/img/` folder.
  # hero_media = "hero-academic.png"
@@ -36,11 +36,11 @@ title = "Sitio en construcción"
 # Call to action links (optional).
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
-# [cta]
-#   url = "https://sourcethemes.com/academic/docs/install/"
-#   label = "Get Started"
-#   icon_pack = "fas"
-#   icon = "download"
+[cta]
+  url = "slides/dispersion_models/Presentation.html"
+  label = "Ir a la presentación"
+  icon_pack = "fas"
+  icon = "link"
 #   
 # [cta_alt]
 #   url = "https://sourcethemes.com/academic/"
@@ -51,4 +51,6 @@ title = "Sitio en construcción"
 #   label = '<a class="js-github-release" href="https://sourcethemes.com/academic/updates" data-repo="gcushen/hugo-academic">Latest release<!-- V --></a>'
 +++
 
-Disculpe las molestias
+**Universidad Peruana Los Andes**
+
+22 de Julio 3:00PM (GMT ‑5)

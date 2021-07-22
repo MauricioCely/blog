@@ -38,7 +38,7 @@ title = "Modelos de Dispersión"
 #   Remove a link/note by deleting a cta/note block.
 [cta]
   url = "slides/dispersion_models/Presentation.html"
-  label = "Ir a la presentación"
+  label = "Ir a la presentación."
   icon_pack = "fas"
   icon = "link"
 #   

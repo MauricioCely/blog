@@ -52,5 +52,3 @@ title = "Modelos de Dispersión"
 +++
 
 **Universidad Peruana Los Andes**
-
-22 de Julio 3:00PM (GMT ‑5)
